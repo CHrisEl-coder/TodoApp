@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-list app</title>
+    <script src="https://kit.fontawesome.com/1be0db0751.js" crossorigin="anonymous"></script>
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <main>
+        <div>
+            <article>
+                <input name="search" type="text" id="search" placeholder="search todo.."/> 
+                <button><i class="fa fa-search"></i></button>
+            </article>
+            <div class="sec-div">
+                
+                <ul>
+
+                    <% if (todos.length > 0) { %>
+                        <% for (const todo of todos) { %>
+                        <li>
+                            
+                            <p> <%= todo.createdAt.toString().slice(16, 24) %> </p>
+                            <p class="name"> <%= todo.todo %> </p>
+                            <button data-doc="<%= todo._id %>" class="delete" ><img src="/assets/delete.svg" data-doc="<%= todo._id %>" /></button>
+                        </li>
+                <%  } %>
+                <% } else { %>
+                        <h3> No Todos to Display.....</h3>
+                        <% } %>
+                </ul>
+                <button class="button"><img src="/assets/plus.svg" height="16px"/> </button>
+
+            </div>
+        </div>
+    </main>
+
+
+    <form action="/todo" method="POST" class="hide">
+
+        <label for="todo">Task: </label>
+        <input name="todo" type="text" id="todo" placeholder="Add a Task" required />
+
+            
+
+        <button type="submit" class="form">Add</button> 
+
+           
+
+
+        
+    </form>
+
+    
+
+    <script src="/assets/todo-list.js" type="text/javascript"></script>
+</body>
+</html>
